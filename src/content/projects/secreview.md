@@ -6,6 +6,6 @@ target: _blank
 image: ../../assets/projects/secreview.png
 imagePosition: center
 chip: secreview.io ↗
-description: A structured security-review process for engineering teams — tracked findings, clear ownership, approvals and a full audit trail, so nothing slips through and nothing gets blocked.
+description: A structured security-review tool for modern engineering teams moving at pace. Making sure nothing bad slips through and nothing good gets blocked.
 order: 1
 ---
