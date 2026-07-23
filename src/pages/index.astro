@@ -1,0 +1,374 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const allProjects = await getCollection('projects');
+const featuredProjects = allProjects
+  .filter((p) => p.data.featured)
+  .sort((a, b) => a.data.order - b.data.order);
+const gridProjects = allProjects
+  .filter((p) => !p.data.featured)
+  .sort((a, b) => a.data.order - b.data.order);
+
+const allPosts = (await getCollection('posts'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => Number(b.data.year) - Number(a.data.year) || a.data.order - b.data.order);
+---
+
+<Layout
+  title="Chris Matthews"
+  description="A decade-plus in technology and engineering leadership, most recently across product, platform, trust & security at Monzo. These days I'm enjoying early fatherhood and exploring what comes next."
+>
+  <Header base="" />
+
+  <!-- ===== HERO ===== -->
+  <section id="top" style="padding:96px 0 80px">
+    <h1
+      class="hero-h1"
+      style="font-weight:400;font-size:64px;line-height:1.04;letter-spacing:-.02em;margin:0 0 32px;text-wrap:pretty;max-width:22ch"
+    >
+      I build engineering teams and products — and things made of wood.
+    </h1>
+    <p class="sans" style="font-size:17px;line-height:1.65;color:#4a453d;margin:0;max-width:52ch">
+      A decade-plus in technology and engineering leadership, most recently across product, platform, trust &amp;
+      security at Monzo. These days I'm enjoying early fatherhood and exploring what comes next.
+    </p>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section
+    id="about"
+    class="sec"
+    style="display:grid;grid-template-columns:130px 1fr;gap:44px;border-top:1px solid #e3ddd1;padding:56px 0"
+  >
+    <div class="lbl" style="padding-top:6px">About</div>
+    <div>
+      <p style="font-size:20px;line-height:1.6;margin:0 0 22px;color:#2a2620;text-wrap:pretty">
+        I'm a builder at heart — of software, teams and products, but also of things made from wood. I'm a husband,
+        dad and dog-dad; a wine aficionado; and a rugby player and fan.
+      </p>
+      <p class="sans" style="font-size:15px;line-height:1.72;margin:0;color:#5c564c;text-wrap:pretty">
+        Professionally, I've spent more than a decade in technology and engineering leadership, most recently across
+        product, platform, trust and security at Monzo. These days, I'm enjoying early fatherhood and exploring what
+        comes next — building side projects, learning to woodwork, and diving deep into engineering, leadership,
+        wine and anything else that has caught my curiosity.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== NOW ===== -->
+  <section
+    id="now"
+    class="sec"
+    style="display:grid;grid-template-columns:130px 1fr;gap:44px;border-top:1px solid #e3ddd1;padding:56px 0"
+  >
+    <div class="lbl" style="padding-top:6px">Now</div>
+    <div>
+      <div style="display:flex;flex-direction:column;gap:0">
+        <div style="display:flex;gap:20px;padding:16px 0;border-bottom:1px solid #ece6da">
+          <span class="mono" style="font-size:11px;color:#b0a898;width:96px;flex:none;padding-top:4px">FATHERHOOD</span>
+          <span class="sans" style="font-size:15px;line-height:1.55;color:#4a453d"
+            >Enjoying the early days — the best and busiest project I've worked on.</span
+          >
+        </div>
+        <div style="display:flex;gap:20px;padding:16px 0;border-bottom:1px solid #ece6da">
+          <span class="mono" style="font-size:11px;color:#b0a898;width:96px;flex:none;padding-top:4px">BUILDING</span>
+          <span class="sans" style="font-size:15px;line-height:1.55;color:#4a453d"
+            >Side projects (like <a
+              href="https://github.com/cdm319/grapescrape"
+              target="_blank"
+              rel="noopener"
+              class="mono"
+              style="font-size:13px;border-bottom:1px solid #d8cfbd;display:inline-flex;align-items:baseline;gap:5px"
+              >grapescrape&#8239;<svg
+                width="11"
+                height="11"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"><path d="M6.5 3H3v10h10V9.5"></path><path d="M9 3h4v4"></path><path d="M12.5 3.5 7.5 8.5"
+                ></path></svg
+              ></a
+            >) and exploring what comes next.</span
+          >
+        </div>
+        <div style="display:flex;gap:20px;padding:16px 0;border-bottom:1px solid #ece6da">
+          <span class="mono" style="font-size:11px;color:#b0a898;width:96px;flex:none;padding-top:4px">MAKING</span>
+          <span class="sans" style="font-size:15px;line-height:1.55;color:#4a453d"
+            >Learning woodwork — one slightly wonky joint at a time.</span
+          >
+        </div>
+        <div style="display:flex;gap:20px;padding:16px 0">
+          <span class="mono" style="font-size:11px;color:#b0a898;width:96px;flex:none;padding-top:4px">LEARNING</span>
+          <span class="sans" style="font-size:15px;line-height:1.55;color:#4a453d"
+            >Going deep on agentic engineering, leadership, wine and rugby.</span
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EXPERIENCE ===== -->
+  <section
+    id="experience"
+    class="sec"
+    style="display:grid;grid-template-columns:130px 1fr;gap:44px;border-top:1px solid #e3ddd1;padding:56px 0"
+  >
+    <div class="lbl" style="padding-top:6px">Experience</div>
+    <div style="display:flex;flex-direction:column;gap:40px">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:5px">
+          <h3 style="font-size:21px;font-weight:500;margin:0">Monzo</h3>
+          <span class="mono" style="font-size:11px;color:#b0a898;flex:none">2020 — 2026</span>
+        </div>
+        <div class="sans" style="font-size:13px;font-weight:600;color:#8a5a2b;margin-bottom:12px">
+          Engineering Manager — Product, Platform &amp; Security
+        </div>
+        <p class="sans" style="font-size:14px;line-height:1.65;margin:0 0 14px;color:#5c564c">
+          Led multi-team engineering groups across Security Platform, Detection Engineering and Customer Trust &amp;
+          Safety — spanning customer-facing protection products, internal security platforms and detection
+          capabilities.
+        </p>
+        <ul class="sans" style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px">
+          <li style="display:flex;gap:12px;font-size:14px;line-height:1.55;color:#5c564c">
+            <span style="color:#c9a06a">—</span><span
+              >Scaled Security Engineering from a 12-person function into a multi-squad organisation, and designed
+              the 8-squad operating model adopted for 2025+ planning.</span
+            >
+          </li>
+          <li style="display:flex;gap:12px;font-size:14px;line-height:1.55;color:#5c564c">
+            <span style="color:#c9a06a">—</span><span
+              >Led teams shipping the award-winning, industry-first <b style="font-weight:600;color:#3a352d"
+                >Call Status</b
+              > (700k+ customers daily) and <b style="font-weight:600;color:#3a352d">Added Security</b>, protecting
+              £1.2bn+ in customer funds.</span
+            >
+          </li>
+          <li style="display:flex;gap:12px;font-size:14px;line-height:1.55;color:#5c564c">
+            <span style="color:#c9a06a">—</span><span
+              >Built internal security platforms including an in-house <b style="font-weight:600;color:#3a352d"
+                >SIEM</b
+              > processing 1bn+ events/minute, and developed multiple engineers into technical and
+              people-leadership roles.</span
+            >
+          </li>
+        </ul>
+      </div>
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:5px">
+          <h3 style="font-size:21px;font-weight:500;margin:0">Capital One</h3>
+          <span class="mono" style="font-size:11px;color:#b0a898;flex:none">2015 — 2020</span>
+        </div>
+        <div class="sans" style="font-size:13px;font-weight:600;color:#8a5a2b;margin-bottom:12px">
+          Engineering Manager · Tech Lead · Software Engineer
+        </div>
+        <p class="sans" style="font-size:14px;line-height:1.65;margin:0;color:#5c564c">
+          Grew from backend engineer to squad tech lead to engineering manager on Capital One's Web Customer
+          Servicing platform — taking it from zero to one, then leading a web engineering team and cross-tribe
+          initiatives in a regulated environment.
+        </p>
+      </div>
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:5px">
+          <h3 style="font-size:21px;font-weight:500;margin:0;color:#6f6a60">Earlier</h3>
+          <span class="mono" style="font-size:11px;color:#c9c2b4;flex:none">2011 — 2015</span>
+        </div>
+        <p class="sans" style="font-size:14px;line-height:1.65;margin:0;color:#8a8377">
+          Software Engineer at Intercede, and Assistant Software Engineer at Liberty IT.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EDUCATION ===== -->
+  <section
+    id="education"
+    class="sec"
+    style="display:grid;grid-template-columns:130px 1fr;gap:44px;border-top:1px solid #e3ddd1;padding:56px 0"
+  >
+    <div class="lbl" style="padding-top:6px">Education</div>
+    <div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:5px">
+        <h3 style="font-size:21px;font-weight:500;margin:0">Loughborough University</h3>
+        <span class="mono" style="font-size:11px;color:#b0a898;flex:none">2009 — 2014</span>
+      </div>
+      <p class="sans" style="font-size:14px;line-height:1.65;margin:0;color:#5c564c">
+        MSci Computer Science — First Class Honours.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== WORK / PROJECTS ===== -->
+  <section
+    id="work"
+    class="sec"
+    style="display:grid;grid-template-columns:130px 1fr;gap:44px;border-top:1px solid #e3ddd1;padding:56px 0"
+  >
+    <div class="lbl" style="padding-top:6px">Work</div>
+    <div>
+      <p class="sans" style="font-size:14px;line-height:1.6;color:#8a8377;margin:0 0 28px;font-style:italic">
+        Side projects, experiments and things I've made.
+      </p>
+
+      {
+        featuredProjects.map((project) => (
+          <a href={project.data.href} target={project.data.target} rel="noopener" style="display:block;margin-bottom:24px">
+            <div style="border-radius:6px;overflow:hidden;margin-bottom:14px;border:1px solid #e3ddd1;position:relative;box-shadow:0 2px 12px rgba(60,45,25,.06)">
+              {project.data.image && (
+                <Image
+                  src={project.data.image}
+                  alt={project.data.title}
+                  width={1600}
+                  style="width:100%;object-fit:cover;display:block;aspect-ratio:16 / 8;object-position:top center"
+                />
+              )}
+              {project.data.chip && (
+                <span
+                  class="mono"
+                  style="position:absolute;bottom:12px;right:12px;font-size:10px;color:#fff;background:rgba(0,0,0,.5);padding:4px 9px;border-radius:5px"
+                >
+                  {project.data.chip}
+                </span>
+              )}
+            </div>
+            <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:5px">
+              <span class="sans" style="font-size:18px;font-weight:600">{project.data.title}</span>
+              <span class="mono" style="font-size:11px;color:#b0a898">{project.data.tags}</span>
+            </div>
+            <div class="sans" style="font-size:14px;line-height:1.55;color:#5c564c;max-width:64ch">
+              {project.data.description}
+            </div>
+          </a>
+        ))
+      }
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+        {
+          gridProjects.map((project) => (
+            <a
+              href={project.data.href ?? '#work'}
+              target={project.data.target}
+              rel="noopener"
+              style="display:block"
+            >
+              <div style="aspect-ratio:4/3;border-radius:5px;overflow:hidden;margin-bottom:12px;border:1px solid #e3ddd1;position:relative">
+                {project.data.image && (
+                  <Image
+                    src={project.data.image}
+                    alt={project.data.title}
+                    width={800}
+                    style={`width:100%;object-fit:cover;display:block;height:100%;object-position:${project.data.imagePosition}`}
+                  />
+                )}
+                {project.data.chip && (
+                  <span
+                    class="mono"
+                    style="position:absolute;bottom:10px;right:10px;font-size:10px;color:#fff;background:rgba(0,0,0,.45);padding:3px 7px;border-radius:4px"
+                  >
+                    {project.data.chip}
+                  </span>
+                )}
+              </div>
+              <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:3px">
+                <span class="sans" style="font-size:15px;font-weight:600">{project.data.title}</span>
+                <span class="mono" style="font-size:10px;color:#b0a898">{project.data.tags}</span>
+              </div>
+              <div class="sans" style="font-size:13px;line-height:1.5;color:#8a8377">{project.data.description}</div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WRITING ===== -->
+  <section
+    id="writing"
+    class="sec"
+    style="display:grid;grid-template-columns:130px 1fr;gap:44px;border-top:1px solid #e3ddd1;padding:56px 0"
+  >
+    <div class="lbl" style="padding-top:6px">Writing</div>
+    <div>
+      <p class="sans" style="font-size:14px;line-height:1.6;color:#8a8377;margin:0 0 20px;font-style:italic">
+        Notes on engineering, leadership, and whatever's caught my curiosity.
+      </p>
+      <div style="display:flex;flex-direction:column;border-bottom:1px solid #ece6da">
+        {
+          allPosts.map((post) => (
+            <a
+              href={post.data.href ?? `/writing/${post.id}/`}
+              target={post.data.href ? '_blank' : '_self'}
+              rel={post.data.href ? 'noopener' : undefined}
+              style="display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:18px 0;border-top:1px solid #ece6da"
+            >
+              <span style="font-size:18px;font-weight:400">{post.data.title}</span>
+              <span class="mono" style="font-size:11px;color:#b0a898;flex:none">{post.data.year}</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section
+    id="contact"
+    class="sec"
+    style="display:grid;grid-template-columns:130px 1fr;gap:44px;border-top:1px solid #e3ddd1;padding:56px 0 20px"
+  >
+    <div class="lbl" style="padding-top:6px">Contact</div>
+    <div>
+      <h2 style="font-weight:400;font-size:30px;line-height:1.2;margin:0 0 8px;letter-spacing:-.01em">Let's talk.</h2>
+      <p class="sans" style="font-size:15px;line-height:1.6;color:#5c564c;margin:0 0 30px;max-width:40ch">
+        Wine, rugby, woodwork, engineering, or what comes next — always happy to chat.
+      </p>
+      <a
+        href="mailto:chrismatthews@outlook.com"
+        style="display:inline-block;font-size:22px;border-bottom:1px solid #d8cfbd;padding-bottom:3px;margin-bottom:34px"
+        >chrismatthews@outlook.com</a
+      >
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:0;max-width:440px">
+        <a
+          href="https://github.com/cdm319"
+          target="_blank"
+          rel="noopener"
+          class="sans"
+          style="display:flex;justify-content:space-between;align-items:center;padding:15px 0;border-top:1px solid #ece6da;font-size:14px;font-weight:500;margin-right:20px"
+          ><span>GitHub</span><span class="mono" style="font-size:11px;color:#b0a898">cdm319 ↗</span></a
+        >
+        <a
+          href="https://x.com/cdm319"
+          target="_blank"
+          rel="noopener"
+          class="sans"
+          style="display:flex;justify-content:space-between;align-items:center;padding:15px 0;border-top:1px solid #ece6da;font-size:14px;font-weight:500;margin-left:20px"
+          ><span>X</span><span class="mono" style="font-size:11px;color:#b0a898">cdm319 ↗</span></a
+        >
+        <a
+          href="https://www.linkedin.com/in/cmatthews319/"
+          target="_blank"
+          rel="noopener"
+          class="sans"
+          style="display:flex;justify-content:space-between;align-items:center;padding:15px 0;border-top:1px solid #ece6da;font-size:14px;font-weight:500;margin-right:20px"
+          ><span>LinkedIn</span><span class="mono" style="font-size:11px;color:#b0a898">cmatthews319 ↗</span></a
+        >
+        <a
+          href="https://www.instagram.com/cdm319/"
+          target="_blank"
+          rel="noopener"
+          class="sans"
+          style="display:flex;justify-content:space-between;align-items:center;padding:15px 0;border-top:1px solid #ece6da;font-size:14px;font-weight:500;margin-left:20px"
+          ><span>Instagram</span><span class="mono" style="font-size:11px;color:#b0a898">cdm319 ↗</span></a
+        >
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
